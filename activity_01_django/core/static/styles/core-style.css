@@ -1,0 +1,27 @@
+main {
+    margin-top: 64px;
+    div {
+
+        padding: 0 10%;
+        h1, p {
+            text-align: center;
+        }
+
+        h1 {
+            line-height: 49px;
+            margin-bottom: 24px;
+        }
+
+        p {
+            line-height: 32px;
+        }
+
+        .btn-primary{
+            display: block;
+            width: 300px;
+            margin: 32px auto;
+            text-align: center;
+        }
+    }
+
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles/core-style.css' %}"/>
+{% endblock head %}
+{% block main_content %}
+
+<div class="container">
+<h1>Crie agora suas enquetes!</h1>
+<p>Seja bem-vindo ao Poll, a plataforma ideal para você criar, compartilhar e participar de enquetes
+    de forma simples e interativa! Aqui, você pode expressar sua opinião, coletar feedback em tempo real e descobrir
+    tendências sobre os mais variados temas.</p>
+
+<a class="btn btn-primary" href="{% url "index_enquete" %}">Entre e crie suas enquetes</a>
+</div>
+
+{% endblock main_content %}
