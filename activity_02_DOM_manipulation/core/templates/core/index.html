@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+{% block main %}
+    <div class="container">
+        <div class="mainlyContent">
+            <h1>Bem vindo!</h1>
+
+            <p>
+                Cuide de seu corpo e da mente. Você precisa estar em forma e com boa atividade cognitiva!
+                Evite ficar tempo demais navegando nos dispositivos eletrônicos, eles são altamente nocivos para sua saúde: 
+                podendo te causar problemas de visão e para sua atividade neural, reduzindo a neuroplasticidade dos neurônios
+                que poderia ser exercitada lendo um livro.
+            </p>
+
+            <p>
+                Lembre-se de se exercitar sempre: uma corrida ao ar livre, ir a academia ou lutar jiu jitsu.
+                O importante é se movimentar!
+            </p>
+
+            <p>
+                Agora vamos verificar qual é o seu Índice de Massa Corporal? O
+                <a id="linkImc" href="{% url 'imc-calculator' %}">IMC</a> calcula a distribuição 
+                da sua massa e define se está tudo bem ou se você está passando 
+                dos limites, a partir da sua estatura e massa.
+            </p>
+            
+        </div>
+        <img src="{% static 'images/clock_retro.webp' %}" alt="">
+
+        <img src="{% static 'images/heart_walk.webp' %}" alt="">
+        <div class="mainlyContent">
+            <p>
+                Com o resultado obtido, basta identificar em qual dos valores de referência a pessoa se enquadra. 
+                Esses valores são:
+            </p> 
+
+            <ul>
+                <li>abaixo do peso: IMC igual ou superior a 17 kg/m2, ou, igual ou menor que 18,4 kg/m2;</li>
+                <li>peso normal: IMC variando entre 18,5 a 24,9 kg/m2;</li>
+                <li>acima do peso: IMC igual ou superior a 25 kg/m2, ou, igual ou menor a 29,9kg/m2;</li>
+                <li>obesidade grau I: IMC entre 30 a 34,9kg/m2;</li>
+                <li>obesidade grau II: IMC entre 35 a 40 kg/m2;</li>
+                <li>obesidade grau III (obesidade mórbida): IMC maior que 40 kg/m2.</li>
+
+            </ul>
+        </div>
+        
+    </div>
+
+{% endblock main %}

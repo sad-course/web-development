@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+{% block main %}
+<div class="container">
+        <form class="calculatorForm">
+            <input type="text" id="inputWeight" placeholder="Informe seu peso">
+            <input type="text" id="inputHeight" placeholder="Informe sua altura">
+
+            <button id="btnCalc" type="reset">Calcular</button>
+        </form>
+</div>
+{% endblock main %}
+
+{% block script %}
+<script src="{% static 'js/calc_imc.js' %}"></script>    
+{% endblock script %}
+
