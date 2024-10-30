@@ -1,0 +1,34 @@
+/* #e8a598
+#ffb5a7
+#fec5bb
+#fcd5ce
+#fae1dd
+#f8edeb
+#fcd2af */
+
+
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+
+    box-sizing: border-box;
+}
+
+#navbar{
+    width: 100%;
+    background-color: #f8edeb;
+    padding: 20px;
+
+    display: flex;
+    gap: 20px;
+}
+
+#navbar > a{
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    margin: 200px;
+}

@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.container > .mainlyContent{
+    width: 500px;
+}
+
+#linkImc{
+    background-color: #f8edeb;
+}
+
+.calculatorForm{
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.calculatorForm > input {
+    width: 400px;
+    height: 40px;
+
+    background-color: #f8edeb;
+    border: none;
+    border-radius: 5px;
+
+    padding-left: 20px;
+
+}
