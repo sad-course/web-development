@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+
+    box-sizing: border-box;
+}
+
+main{
+    margin: 200px;
+}
+
+#container {
+    width: 600px;
+    height: 600px;
+
+}
