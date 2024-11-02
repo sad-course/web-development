@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Input Masks </title>
     <link rel="stylesheet" href="assets/styles/style.css">
-</head>
+
 <body>
     <div class="navbar">
         <span id="openMenuBtn">
@@ -19,18 +19,22 @@
         </div>
         
     </div>
+
+
     <main>
-        <div id="container">
-            <form action="" id="itemsShopForm">
-                <input type="text" id="itemTextInput">
-                <button type="reset" id="addItemBtn">Add</button>
+        <div id="container" style="width: 400px;">
+            <form action="" class="" style="display: flex; flex-direction: column; gap: 30px;">
+                <input type="text" id="nameInput">
+                <input type="text" id="cpfInput" maxlength="14">
+                <input type="email" id="emailInput">
+                <input type="text" name="" id="phoneInput" maxlength="14">
+                <button type="reset" onclick="validateInputs()">Validar</button>
             </form>
-            <div>
-                <ol id="shopItemsList"></ol>
-            </div>
         </div>
     </main>
-<script src="assets/js/script.js"></script>
+
 <script src="assets/js/functions.js"></script>
+<script src="assets/js/masks.js"></script>
+
 </body>
 </html>

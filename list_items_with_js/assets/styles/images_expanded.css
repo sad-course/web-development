@@ -1,0 +1,25 @@
+body{
+    margin: 0px;
+    width: 100vw;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+}
+
+div.section-image{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.397); /* Preto com 50% de opacidade */
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+div.image-expanded{
+    transform: scale(2);
+}
