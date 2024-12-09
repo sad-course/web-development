@@ -31,5 +31,20 @@ phoneInputField.addEventListener("keypress", (event) => {
 })
 
 function validateInputs(){
-    
+    let cpfRegex= /^(\d{3}\.){2}(\d{3})(\-\d{2})/gm
+    let phoneRegexSpecialChar = /(\(|\)|\-)/gm
+    let phoneNumbers = /(\d{11})/gm
+    let cpfValue = cpfInputField.value;
+    let phoneValue = phoneInputField.value;
+
+    if (!cpfRegex.test(cpfValue) && cpfValue != ""){
+        alert("Número de cpf inválido")
+    }
+    if (phoneValue != ""){
+        phoneValue = phoneValue.replace(phoneRegexSpecialChar, "");
+        if (!phoneNumbers.test(phoneValue)){
+            alert("O número de telefone é inválido.")
+        }
+    }
+
 }

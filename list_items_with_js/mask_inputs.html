@@ -24,10 +24,22 @@
     <main>
         <div id="container" style="width: 400px;">
             <form action="" class="" style="display: flex; flex-direction: column; gap: 30px;">
-                <input type="text" id="nameInput">
-                <input type="text" id="cpfInput" maxlength="14">
-                <input type="email" id="emailInput">
-                <input type="text" name="" id="phoneInput" maxlength="14">
+                <div>
+                    <label for="">Nome:</label>
+                    <input type="text" id="nameInput">
+                </div>
+                <div>
+                    <label for="">CPF:</label>
+                    <input type="text" id="cpfInput" maxlength="14">
+                </div>
+                <div>
+                    <label for="">Email:</label>
+                    <input type="email" id="emailInput">
+                </div>
+                <div>
+                    <label for="">Telefone:</label>
+                    <input type="text" name="" id="phoneInput" maxlength="14">
+                </div>
                 <button type="reset" onclick="validateInputs()">Validar</button>
             </form>
         </div>

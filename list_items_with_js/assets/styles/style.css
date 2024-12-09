@@ -33,4 +33,5 @@ main{
 }
 #openMenuBtn{
     width: 100px;
+    cursor: pointer;
 }
