@@ -16,7 +16,7 @@
     }
 </style>
 <body>
-    <h1>Listar Produtos</h1>
+    <h1>Listar Fornecedores</h1>
     <button><a href="{% url 'create_product' %}">Criar produto</a></button>
     <button><a href="{% url 'index' %}">Listar produtos</a></button>
     <button><a href="{% url 'supplier_index' %}">Listar Fornecedores</a></button>
@@ -24,27 +24,18 @@
     <table>
         <thead>
             <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Code</th>
-                <th>Price</th>
+                <th>Name</th>
+                <th>CEP</th>
+                <th>Phone</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for product in products %}
+            {% for supplier in suppliers %}
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>
-                        {% for category in product.categories.all %}
-                            <span>{{ category }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ product.code }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <a href="{% url 'product_detail' product.id %}">Detalhe</a>
-                    </td>
+                    <td>{{ supplier.name }}</td>
+                    <td>{{ supplier.cep }}</td>
+                    <td>{{ supplier.phone }}</td>
                 </tr>
             {% endfor %}
         </tbody>

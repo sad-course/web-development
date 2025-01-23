@@ -16,7 +16,7 @@
     }
 </style>
 <body>
-    <h1>Listar Produtos</h1>
+    <h1>Listar Categorias</h1>
     <button><a href="{% url 'create_product' %}">Criar produto</a></button>
     <button><a href="{% url 'index' %}">Listar produtos</a></button>
     <button><a href="{% url 'supplier_index' %}">Listar Fornecedores</a></button>
@@ -24,26 +24,17 @@
     <table>
         <thead>
             <tr>
-                <th>Product</th>
                 <th>Category</th>
-                <th>Code</th>
-                <th>Price</th>
+                <th>Description</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for product in products %}
+            {% for category in categories %}
                 <tr>
-                    <td>{{ product.name }}</td>
+                    <td>{{ category.name }}</td>
                     <td>
-                        {% for category in product.categories.all %}
-                            <span>{{ category }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ product.code }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <a href="{% url 'product_detail' product.id %}">Detalhe</a>
+                        <a href="{% url 'category_detail' category.id %}">Detalhe</a>
                     </td>
                 </tr>
             {% endfor %}

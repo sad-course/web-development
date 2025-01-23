@@ -10,3 +10,9 @@ class ProductForm(forms.Form):
     categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple,)
     supplier = forms.ModelChoiceField(queryset=Supplier.objects.all(),)
+
+    def clean_quantity(self):
+        quantity = self.cleaned_data['quantity']
+        if quantity <= 0:
+            raise forms.ValidationError("Quantity must be greater than zero.")
+        return quantity
