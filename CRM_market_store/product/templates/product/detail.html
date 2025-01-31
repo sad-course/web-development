@@ -1,48 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    table{
-        border-collapse: collapse;
-    }
+{% extends 'base.html' %}
 
-    table, td, th {
-        border: 2px solid black;
-        padding: 10px;
-    }
-</style>
-<body>
-    <table>
-        <thead>
+{% block title %}
+<title>{{ product.name }}</title>
+{% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Code</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody>
             <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Code</th>
-                <th>Price</th>
+                <td>{{ product.name }}</td>
+                <td>
+                    {% for category in product.categories.all %}
+                        <span>{{ category }}</span>
+                    {% endfor %}
+                </td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{% url 'update_product' product.id %}">Update</a>
+                    <a href="{% url 'delete_product' product.id %}">Delete</a>
+                </td>
             </tr>
-        </thead>
-
-        <tbody>
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>
-                        {% for category in product.categories.all %}
-                            <span>{{ category }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ product.code }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <a href="{% url 'update_product' product.id %}">Update</a>
-                        <a href="{% url 'delete_product' product.id %}">Delete</a>
-                    </td>
-                </tr>
-        </tbody>
-    </table>
-    
-</body>
-</html>
+    </tbody>
+</table>
+{% endblock %}

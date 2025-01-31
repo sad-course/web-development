@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product, Supplier, Category
-from .forms import ProductForm
+from .forms import ProductForm, CategoryForm, SupplierForm
 
 # Create your views here.
 def index(request):
@@ -8,7 +8,7 @@ def index(request):
         context = {"products": Product.objects.all()}
         return render(request, "product/index.html", context=context)
 
-def create_product(request):
+def product_create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
@@ -20,7 +20,8 @@ def create_product(request):
             categories = form.cleaned_data['categories']
             supplier = form.cleaned_data['supplier']
 
-            product = Product(name=product_name, code=code, description=description, price=price, quantity=quantity, supplier=supplier)
+            product = Product(name=product_name, code=code, description=description, \
+                            price=price, quantity=quantity, supplier=supplier)
             product.save()
             product.categories.set(categories)
 
@@ -60,7 +61,23 @@ def category_detail(request, category_id):
         category = Category.objects.get(id=category_id)
         context = {"category": category}
         return render(request, "category/detail.html", context=context)
-    
+
+def category_create(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+
+            category = Category(name=name, description=description)
+            category.save()
+
+
+            return redirect('category_index')
+    else:
+        form = CategoryForm()
+    return render(request, "category/create.html", {"form": form})
+
 def supplier_index(request):
     if request.method == 'GET':
         context = {"suppliers": Supplier.objects.all()}
@@ -71,3 +88,19 @@ def supplier_detail(request, supplier_id):
         supplier = Supplier.objects.get(id=supplier_id)
         context = {"supplier": supplier}
         return render(request, "supplier/detail.html", context=context)
+
+def supplier_create(request):
+    if request.method == 'POST':
+        form = SupplierForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            cep = form.cleaned_data['name']
+            phone = form.cleaned_data['name']
+            supplier = Supplier(name=name, cep=cep, phone=phone)
+            supplier.save()
+
+
+            return redirect('supplier_index')
+    else:
+        form = SupplierForm()
+    return render(request, "supplier/create.html", {"form": form})
