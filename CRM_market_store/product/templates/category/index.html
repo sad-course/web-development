@@ -1,49 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    table{
-        border-collapse: collapse;
-    }
+{% extends 'base.html' %}
 
-    table, td, th {
-        border: 2px solid black;
-        padding: 10px;
-    }
-</style>
-<body>
-    <h1>Listar Categorias</h1>
-    <button><a href="{% url 'create_product' %}">Criar produto</a></button>
-    <button><a href="{% url 'index' %}">Listar produtos</a></button>
-    
-    <button><a href="{% url 'create_supplier' %}">Criar Fornecedor</a></button>
-    <button><a href="{% url 'supplier_index' %}">Listar Fornecedores</a></button>
-    
-    <button><a href="{% url 'create_category' %}">Criar Categoria</a></button>
-    <button><a href="{% url 'category_index' %}">Listar Categorias</a></button>
-    <table>
-        <thead>
+{% block title %}
+<title>Categorias</title>
+{% endblock %}
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for category in categories %}
             <tr>
-                <th>Category</th>
-                <th>Description</th>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'category_detail' category.id %}">Detalhe</a>
+                </td>
             </tr>
-        </thead>
-
-        <tbody>
-            {% for category in categories %}
-                <tr>
-                    <td>{{ category.name }}</td>
-                    <td>
-                        <a href="{% url 'category_detail' category.id %}">Detalhe</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-</body>
-</html>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

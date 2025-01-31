@@ -1,35 +1,42 @@
+from ast import List
 from django.shortcuts import render, redirect
 from .models import Product, Supplier, Category
 from .forms import ProductForm, CategoryForm, SupplierForm
+from django.views import generic
 
 # Create your views here.
-def index(request):
-    if request.method == 'GET':
-        context = {"products": Product.objects.all()}
-        return render(request, "product/index.html", context=context)
+class ProductList(generic.ListView):
+    queryset = Product.objects.all()
+    template_name = "product/index.html"
+    context_object_name = "products"
 
-def product_create(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST)
-        if form.is_valid():
-            product_name = form.cleaned_data['name']
-            code = form.cleaned_data['code']
-            description = form.cleaned_data['description']
-            price = form.cleaned_data['price']
-            quantity = form.cleaned_data['quantity']
-            categories = form.cleaned_data['categories']
-            supplier = form.cleaned_data['supplier']
+class ProductCreate(generic.CreateView):
+    model = Product
+    template_name = "product/create.html"
+    form_class = ProductForm
+    success_url = "/"
 
-            product = Product(name=product_name, code=code, description=description, \
-                            price=price, quantity=quantity, supplier=supplier)
-            product.save()
-            product.categories.set(categories)
+class CategoryList(generic.ListView):
+    queryset = Category.objects.all()
+    template_name = "category/index.html"
+    context_object_name = "categories"
 
+class CategoryCreate(generic.CreateView):
+    model = Category
+    template_name = "category/create.html"
+    form_class=CategoryForm
+    success_url="/category/"
+    
+class SupplierList(generic.ListView):
+    queryset = Supplier.objects.all()
+    template_name = "supplier/index.html"
+    context_object_name = "suppliers"
 
-            return redirect('index')
-    else:
-        form = ProductForm()
-    return render(request, "product/create.html", {"form": form})
+class SupplierCreate(generic.CreateView):
+    model = Supplier
+    template_name = "supplier/create.html"
+    form_class=SupplierForm
+    success_url="/supplier/"
 
 def product_detail(request, product_id):
     if request.method == 'GET':
@@ -50,33 +57,12 @@ def delete_product(request, product_id):
         product = Product.objects.get(id=product_id)
         product.delete()
         return redirect('index')
-    
-def category_index(request):
-    if request.method == 'GET':
-        context = {"categories": Category.objects.all()}
-        return render(request, "category/index.html", context=context)
 
 def category_detail(request, category_id):
     if request.method == 'GET':
         category = Category.objects.get(id=category_id)
         context = {"category": category}
         return render(request, "category/detail.html", context=context)
-
-def category_create(request):
-    if request.method == 'POST':
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            description = form.cleaned_data['description']
-
-            category = Category(name=name, description=description)
-            category.save()
-
-
-            return redirect('category_index')
-    else:
-        form = CategoryForm()
-    return render(request, "category/create.html", {"form": form})
 
 def supplier_index(request):
     if request.method == 'GET':
@@ -89,18 +75,4 @@ def supplier_detail(request, supplier_id):
         context = {"supplier": supplier}
         return render(request, "supplier/detail.html", context=context)
 
-def supplier_create(request):
-    if request.method == 'POST':
-        form = SupplierForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            cep = form.cleaned_data['name']
-            phone = form.cleaned_data['name']
-            supplier = Supplier(name=name, cep=cep, phone=phone)
-            supplier.save()
 
-
-            return redirect('supplier_index')
-    else:
-        form = SupplierForm()
-    return render(request, "supplier/create.html", {"form": form})

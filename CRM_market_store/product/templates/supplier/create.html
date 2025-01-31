@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    table{
-        border-collapse: collapse;
-    }
+{% extends 'base.html' %}
 
-    table, td, th {
-        border: 2px solid black;
-        padding: 10px;
-    }
-</style>
-<body>
-    <form action="{% url 'supplier_create' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Cadastrar</button>
-    </form>
-</body>
-</html>
+{% block title %}
+<title>Fornecedores</title>
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'supplier_create' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Cadastrar</button>
+</form>
+{% endblock %}
